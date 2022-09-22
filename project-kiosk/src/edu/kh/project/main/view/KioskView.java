@@ -1,9 +1,12 @@
 package edu.kh.project.main.view;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import edu.kh.project.main.model.service.KioskService;
+import edu.kh.project.main.model.vo.Kiosk;
 
 public class KioskView {
 	
@@ -49,11 +52,16 @@ public class KioskView {
 	
 	public void coffeeMenu() {
 		System.out.println("<커피 메뉴>");
-		System.out.println();
+		
+		List<Kiosk> kioList = service.coffeeMenu();
+		
+		System.out.println("");
 		
 		
 	}
-		
-		
+
+	
+	
+	
 
 }
