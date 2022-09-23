@@ -143,15 +143,25 @@ public class KioskView {
 				} 
 			
 			} else System.out.println("!! 아이디/비밀번호를 다시 입력해주세요 !!");
-			
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+			
+	/**
+	 * 관리자 메뉴 추가
+	 */
+	private void insertMenu() {
+		System.out.println("\n<<관리자 메뉴 추가>>\n");
+		
+		
+		
 		
 		
 	}
+			
+		
+		
 	
 	
 	
