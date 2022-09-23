@@ -10,22 +10,44 @@ import edu.kh.project.main.model.vo.Kiosk;
 
 public class KioskService {
 
-	KioskDAO dao = new KioskDAO();
+	private KioskDAO dao = new KioskDAO();
 
-	/** 커피 메뉴 선택
+	/** 커피 메뉴 
 	 * @return kioList
-	 * @throws Exception
 	 */
 	public List<Kiosk> coffeeMenu() throws Exception {
 		
 		Connection conn = getConnection();
 		
-		Kiosk kiost = dao.coffeeMenu(conn, )
+		List<Kiosk> kioList = dao.coffeeMenu(conn);
 		
-		List<Kiosk> kioList = dao.coffeeMenu();
+		close(conn);
 		
-		
-		return null;
+		return kioList;
 	}
+
+	
+	/** 노커피 메뉴
+	 * @return kioList
+	 */
+	public List<Kiosk> nocoffeeMenu() throws Exception {
+		
+		Connection conn = getConnection();
+		
+		List<Kiosk> kioList = dao.nocoffeeMenu(conn);
+		
+		close(conn);
+		
+		return kioList;
+
+	}
+	
+	
+	
+
+	
+
+
+
 	
 }

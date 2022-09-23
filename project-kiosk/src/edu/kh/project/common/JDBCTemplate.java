@@ -18,7 +18,7 @@ public class JDBCTemplate {
 	public static Connection getConnection() {
 		
 		try {
-			if(conn != null || conn.isClosed()) {
+			if(conn == null || conn.isClosed()) {
 				Properties prop = new Properties();
 				
 				prop.loadFromXML(new FileInputStream("driver.xml"));

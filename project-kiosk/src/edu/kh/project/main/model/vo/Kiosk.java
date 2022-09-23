@@ -58,6 +58,13 @@ public class Kiosk {
 	public void setMenuPrice(int menuPrice) {
 		this.menuPrice = menuPrice;
 	}
+
+	@Override
+	public String toString() {
+		return menuName;
+	}
+
+	
 	
 
 

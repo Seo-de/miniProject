@@ -3,6 +3,17 @@
 <properties>
 	<comment>kiosk-query.xml</comment>
 	
+	<entry key="coffee">
+	SELECT MENU_COFFEE_NO, MENU_NAME, MENU_PRICE
+	FROM KIOSK_MENU
+	WHERE MENU_TYPE = '커피'
+	</entry>
+	
+		<entry key="nocoffee">
+	SELECT MENU_NOCOFFEE_NO, MENU_NAME, MENU_PRICE
+	FROM KIOSK_MENU
+	WHERE MENU_TYPE = '논커피'
+	</entry>
 	
 	
 </properties>
