@@ -42,17 +42,37 @@ public class KioskService {
 
 	}
 
+	public List<Kiosk> desertMenu() throws Exception {
+		Connection conn = getConnection();
+		
+		List<Kiosk> kioList = dao.desertMenu(conn);
+		
+		close(conn);
+		
+		return kioList;
 
+	}
+
+	public List<Kiosk> ectMenu() throws Exception {
+		Connection conn = getConnection();
+		
+		List<Kiosk> kioList = dao.ectMenu(conn);
+		
+		close(conn);
+		
+		return kioList;
+	}
+	
 	/** 관리자 메뉴 추가
 	 * @param kio
 	 * @return result
 	 * @throws Exception
 	 */
-	public int insertMenu(Kiosk kio) throws Exception {
+	public int insertMenu(int input, Kiosk kio) throws Exception {
 		
 		Connection conn = getConnection();
 		
-		int result = dao.insertMenu(conn, kio);
+		int result = dao.insertMenu(conn, input, kio);
 		
 		if(result > 0) commit(conn);
 		else			rollback(conn);
@@ -61,6 +81,30 @@ public class KioskService {
 		
 		return result;
 	}
+
+
+	/** 관리자 메뉴 수정
+	 * @param input
+	 * @param kio
+	 * @return
+	 * @throws Exception
+	 */
+	public int updateMenu(int input, Kiosk kio) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.updateMenu(conn, input, kio);
+		
+		if(result > 0) commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+
+
+
 	
 	
 	

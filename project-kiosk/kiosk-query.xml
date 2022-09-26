@@ -15,6 +15,18 @@
 	WHERE MENU_TYPE = '논커피'
 	</entry>
 	
+	<entry key="desert">
+	SELECT MENU_DESERT_NO, MENU_NAME, MENU_PRICE
+	FROM KIOSK_MENU
+	WHERE MENU_TYPE = '디저트'
+	</entry>
+	
+	<entry key="ect">
+	SELECT MENU_ECT_NO, MENU_NAME, MENU_PRICE
+	FROM KIOSK_MENU
+	WHERE MENU_TYPE = '기타'
+	</entry>
+	
 	<entry key="insertMenu">
 		INSERT INTO "KIOSK_MENU" (MENU_NAME, MENU_PRICE, MENU_TYPE)
 		VALUES (?, ?, ?)
@@ -41,6 +53,19 @@
 		(MENU_ECT_NO, MENU_NAME, MENU_PRICE, MENU_TYPE)
 		VALUES (SEQ_MENU_ECT_NO.NEXTVAL, ?, ?, '기타')		
 	</entry>
+	
+	<!-- 관리자 메뉴 수정 -->
+	<entry key="updateMenu1">
+		UPDATE KIOSK_MENU SET 
+	</entry>
+	<!-- 커피 메뉴 수정 -->
+	<entry key="updateMenu2-1">
+		MENU_NAME = ?
+		MENU_PRICE = ?
+		WHERE MENU_ECT_NO = ?
+	</entry>
+	
+	
 	
 	
 	

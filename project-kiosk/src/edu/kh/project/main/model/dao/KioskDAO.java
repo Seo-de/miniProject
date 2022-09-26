@@ -104,6 +104,59 @@ public class KioskDAO {
 		return kioList;
 	}
 
+	public List<Kiosk> desertMenu(Connection conn) throws Exception {
+		List<Kiosk> kioList = new ArrayList();
+		
+		try {
+			String sql = prop.getProperty("desert");
+			
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				Kiosk kio = new Kiosk();
+				
+				kio.setDesertNo(rs.getInt(1));
+				kio.setMenuName(rs.getString(2));
+				kio.setMenuPrice(rs.getInt(3));
+				
+				kioList.add(kio);
+			}
+
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		return kioList;
+	}
+	
+	public List<Kiosk> ectMenu(Connection conn) throws Exception {
+		List<Kiosk> kioList = new ArrayList();
+		
+		try {
+			String sql = prop.getProperty("ect");
+			
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				Kiosk kio = new Kiosk();
+				
+				kio.setEctNo(rs.getInt(1));
+				kio.setMenuName(rs.getString(2));
+				kio.setMenuPrice(rs.getInt(3));
+				
+				kioList.add(kio);
+			}
+
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		return kioList;
+	}
 
 	/** 관리자 메뉴 추가
 	 * @param conn
@@ -111,13 +164,14 @@ public class KioskDAO {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int insertMenu(Connection conn, Kiosk kio) throws Exception {
+	public int insertMenu(Connection conn, int input, Kiosk kio) throws Exception {
 		
 		int result = 0;
 		
 		try {
 			
-			String sql = prop.getProperty("insertMenu");
+			String sql = prop.getProperty("plusMenu1")
+						+ prop.getProperty("plusMenu2-"+input);
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, kio.getMenuName());
@@ -131,6 +185,40 @@ public class KioskDAO {
 		
 		return result;
 	}
+
+
+	/** 관리자 메뉴 수정
+	 * @param conn
+	 * @param input
+	 * @param kio
+	 * @return
+	 * @throws Exception
+	 */
+	public int updateMenu(Connection conn, int input, Kiosk kio) throws Exception {
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("plusMenu1")
+						+ prop.getProperty("plusMenu2-"+input);
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, kio.getMenuName());
+			pstmt.setInt(2, kio.getMenuPrice());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+
+
+
+
 		
 		
 

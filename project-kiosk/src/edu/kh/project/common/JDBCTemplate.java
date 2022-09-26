@@ -87,7 +87,7 @@ public class JDBCTemplate {
 	 */
 	public static void commit (Connection conn) {
 		try {
-			if(conn != null && conn.isClosed()) commit(conn);
+			if(conn != null && conn.isClosed())conn.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

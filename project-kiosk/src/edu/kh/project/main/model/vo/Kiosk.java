@@ -1,5 +1,7 @@
 package edu.kh.project.main.model.vo;
 
+
+
 public class Kiosk {
 
 	private int menuNo;
@@ -10,6 +12,7 @@ public class Kiosk {
 	private String menuName;
 	private int menuPrice;
 	private String menuType;
+
 
 	public int getMenuNo() {
 		return menuNo;
