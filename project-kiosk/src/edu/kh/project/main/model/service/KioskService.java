@@ -41,6 +41,26 @@ public class KioskService {
 		return kioList;
 
 	}
+
+
+	/** 관리자 메뉴 추가
+	 * @param kio
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertMenu(Kiosk kio) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.insertMenu(conn, kio);
+		
+		if(result > 0) commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
 	
 	
 	

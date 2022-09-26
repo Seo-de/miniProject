@@ -104,4 +104,34 @@ public class KioskDAO {
 		return kioList;
 	}
 
+
+	/** 관리자 메뉴 추가
+	 * @param conn
+	 * @param kio
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertMenu(Connection conn, Kiosk kio) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("insertMenu");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, kio.getMenuName());
+			pstmt.setInt(2, kio.getMenuPrice());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+		
+		
+
 }

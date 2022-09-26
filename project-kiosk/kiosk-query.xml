@@ -9,11 +9,39 @@
 	WHERE MENU_TYPE = '커피'
 	</entry>
 	
-		<entry key="nocoffee">
+	<entry key="nocoffee">
 	SELECT MENU_NOCOFFEE_NO, MENU_NAME, MENU_PRICE
 	FROM KIOSK_MENU
 	WHERE MENU_TYPE = '논커피'
 	</entry>
+	
+	<entry key="insertMenu">
+		INSERT INTO "KIOSK_MENU" (MENU_NAME, MENU_PRICE, MENU_TYPE)
+		VALUES (?, ?, ?)
+	</entry>
+	
+	
+	<entry key="plusMenu1"> <!-- 메뉴 추가 INSERT부분 -->
+		INSERT INTO KIOSK_MENU
+	</entry>
+	
+	<entry key="plusMenu2-1"><!-- 메뉴 추가 COFFEE 부분 -->
+		(MENU_COFFEE_NO, MENU_NAME, MENU_PRICE, MENU_TYPE)
+		VALUES (SEQ_MENU_COFFEE_NO.NEXTVAL, ?, ?, '커피')
+	</entry>
+	<entry key="plusMenu2-2"><!-- 메뉴 추가 NOCOFFEE 부분 -->
+		(MENU_NOCOFFEE_NO, MENU_NAME, MENU_PRICE, MENU_TYPE)
+		VALUES (SEQ_MENU_NOCOFFEE_NO.NEXTVAL, ?, ?, '논커피')
+	</entry>
+	<entry key="plusMenu2-3"><!-- 메뉴 추가 DESERT 부분 -->
+		(MENU_DESERT_NO, MENU_NAME, MENU_PRICE, MENU_TYPE)
+		VALUES (SEQ_MENU_DESERT_NO.NEXTVAL, ?, ?, '디저트')	
+	</entry>
+	<entry key="plusMenu2-4"><!-- 메뉴 추가 ECT 부분 -->
+		(MENU_ECT_NO, MENU_NAME, MENU_PRICE, MENU_TYPE)
+		VALUES (SEQ_MENU_ECT_NO.NEXTVAL, ?, ?, '기타')		
+	</entry>
+	
 	
 	
 </properties>

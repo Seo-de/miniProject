@@ -2,12 +2,30 @@ package edu.kh.project.main.model.vo;
 
 public class Kiosk {
 
+	private int menuNo;
 	private int coffeeNo;
 	private int nocoffeeNo;
 	private int desertNo;
 	private int ectNo;
 	private String menuName;
 	private int menuPrice;
+	private String menuType;
+
+	public int getMenuNo() {
+		return menuNo;
+	}
+
+	public void setMenuNo(int menuNo) {
+		this.menuNo = menuNo;
+	}
+
+	public String getMenuType() {
+		return menuType;
+	}
+
+	public void setMenuType(String menuType) {
+		this.menuType = menuType;
+	}
 
 	public Kiosk() { }
 

@@ -133,6 +133,7 @@ public class KioskView {
 				
 				System.out.println("번호 입력 : ");
 				int input = sc.nextInt();
+				sc.nextLine();
 				
 				switch(input) {
 				case 1 : insertMenu(); break;
@@ -152,13 +153,51 @@ public class KioskView {
 	 * 관리자 메뉴 추가
 	 */
 	private void insertMenu() {
-		System.out.println("\n<<관리자 메뉴 추가>>\n");
-		
-		
-		
-		
-		
+		try {
+			System.out.println("\n<<관리자 메뉴 추가>>\n");
+			
+			int input = -1;
+			do {
+				System.out.println("1. 커피 추가");
+				System.out.println("2. 논커피 추가");
+				System.out.println("3. 디저트 추가");
+				System.out.println("4. 기타 추가");
+				System.out.println("0. 취소");
+				
+				System.out.println("번호 입력 : ");
+				input = sc.nextInt();
+				sc.nextLine();
+				
+				if(input >= 1 && input <= 4) {
+					System.out.println("추가할 메뉴 이름 : ");
+					String plusMenu = sc.nextLine();
+					System.out.println();
+					
+					
+					System.out.println("추가할 메뉴 금액 : ");
+					int plusPrice = sc.nextInt();
+					sc.nextLine();
+					
+					Kiosk kio = new Kiosk();
+					kio.setMenuName(plusMenu);
+					kio.setMenuPrice(plusPrice);
+					
+					int result = service.insertMenu(kio);
+					
+					if(result > 0) System.out.println("메뉴가 추가 되었습니다.");
+					else 			System.out.println("메뉴 추가에 실패했습니다.");
+				}
+				
+				}while(input != 0);
+				
+				
+			} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
 	}
+
+		
 			
 		
 		
