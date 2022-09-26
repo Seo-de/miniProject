@@ -199,8 +199,8 @@ public class KioskDAO {
 		
 		try {
 			
-			String sql = prop.getProperty("plusMenu1")
-						+ prop.getProperty("plusMenu2-"+input);
+			String sql = prop.getProperty("updateMenu1")
+						+ prop.getProperty("updateMenu2-"+input);
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, kio.getMenuName());

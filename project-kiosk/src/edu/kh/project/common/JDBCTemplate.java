@@ -87,7 +87,7 @@ public class JDBCTemplate {
 	 */
 	public static void commit (Connection conn) {
 		try {
-			if(conn != null && conn.isClosed())conn.commit();
+			if(conn != null && !conn.isClosed())conn.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -96,7 +96,7 @@ public class JDBCTemplate {
 	
 	public static void rollback (Connection conn) {
 		try {
-			if(conn != null && conn.isClosed()) rollback(conn);
+			if(conn != null && !conn.isClosed()) conn.rollback();;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

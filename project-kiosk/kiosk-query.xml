@@ -62,9 +62,26 @@
 	<entry key="updateMenu2-1">
 		MENU_NAME = ?
 		MENU_PRICE = ?
+		WHERE MENU_COFFEE_NO = ?
+	</entry>
+		<!-- 논커피 메뉴 수정 -->
+	<entry key="updateMenu2-2">
+		MENU_NAME = ?
+		MENU_PRICE = ?
+		WHERE MENU_NOCOFFEE_NO = ?
+	</entry>
+		<!-- 디저트 메뉴 수정 -->
+	<entry key="updateMenu2-3">
+		MENU_NAME = ?
+		MENU_PRICE = ?
+		WHERE MENU_DESERT_NO = ?
+	</entry>
+		<!-- 기타 메뉴 수정 -->
+	<entry key="updateMenu2-4">
+		MENU_NAME = ?
+		MENU_PRICE = ?
 		WHERE MENU_ECT_NO = ?
 	</entry>
-	
 	
 	
 	

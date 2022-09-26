@@ -76,6 +76,7 @@ public class KioskView {
 				}
 				System.out.print("커피 메뉴 선택 : ");
 				int choiceCo = sc.nextInt();
+				sc.nextLine();
 				System.out.printf("%d %s을/를 선택하셨습니다.\n", choiceCo, kioList.get(choiceCo-1));
 				System.out.println();
 			}
@@ -102,6 +103,7 @@ public class KioskView {
 				}
 				System.out.print("논커피 메뉴 선택 : ");
 				int choiceNoco = sc.nextInt();
+				sc.nextLine();
 				System.out.printf("%d %s을/를 선택하셨습니다.\n", choiceNoco, kioList.get(choiceNoco-1));
 				System.out.println();
 			}
@@ -125,6 +127,7 @@ public class KioskView {
 				}
 				System.out.print("디저트 메뉴 선택 : ");
 				int choiceNoco = sc.nextInt();
+				sc.nextLine();
 				System.out.printf("%d %s을/를 선택하셨습니다.\n", choiceNoco, kioList.get(choiceNoco-1));
 				System.out.println();
 			}
@@ -147,6 +150,7 @@ public class KioskView {
 				}
 				System.out.print("기타 메뉴 선택 : ");
 				int choiceNoco = sc.nextInt();
+				sc.nextLine();
 				System.out.printf("%d %s을/를 선택하셨습니다.\n", choiceNoco, kioList.get(choiceNoco-1));
 				System.out.println();
 			}
@@ -165,6 +169,7 @@ public class KioskView {
 		
 		System.out.print("비밀번호 : ");
 		String pw = sc.next();
+		
 		
 		try {
 			if(id.equals("id12") && pw.equals("pw12")) {
@@ -185,7 +190,7 @@ public class KioskView {
 				case 2 : updateMenu(); break;
 				case 3 :  break;
 				case 4 :  break;
-				default : System.out.println("메뉴의 번호만 입력해주세요.");
+				default : System.out.println("\n메뉴의 번호만 입력해주세요.\n");
 				} 
 			
 			} else System.out.println("!! 아이디/비밀번호를 다시 입력해주세요 !!");
@@ -229,7 +234,7 @@ public class KioskView {
 					
 					int result = service.insertMenu(input, kio);
 					
-					if(result > 0) System.out.println("메뉴가 추가 되었습니다.");
+					if(result > 0) System.out.println("\n메뉴가 추가 되었습니다.");
 					else 			System.out.println("메뉴 추가에 실패했습니다.");
 				}
 				
@@ -252,8 +257,8 @@ public class KioskView {
 		try {
 			
 			System.out.println("\n<<관리자 메뉴 수정>>\n");
-			
 			int input = -1;
+			
 			do {
 				System.out.println("1. 커피 수정");
 				System.out.println("2. 논커피 수정");
@@ -261,25 +266,26 @@ public class KioskView {
 				System.out.println("4. 기타 수정");
 				System.out.println("0. 취소");
 				
-				System.out.print("번호 입력 : ");
+				System.out.print("수정할 종류 입력 : ");	
 				input = sc.nextInt();
 				sc.nextLine();
-						
+				
+				
 				if(input == 1) {
 					selectCoffee();
-					updatePrint(input);
+					updatePrint(input); break;
 				} else if (input == 2) {
 					selectNocoffee();
-					updatePrint(input);
+					updatePrint(input); break;
 				} else if (input == 3) {
-					selectDesert();
-					updatePrint(input);
-				} else {
+					selectDesert(); 
+					updatePrint(input); break;
+				} else if (input == 4){
 					selectEct();
-					updatePrint(input);
-				}
-					
-
+					updatePrint(input); break;
+				} else if (input == 0) {
+					System.out.println("\n수정을 취소합니다");
+				} else System.out.println("\n잘못 입력하셨습니다."); break;
 				
 			}while(input != 0);
 		} catch (Exception e) {
@@ -290,7 +296,7 @@ public class KioskView {
 	
 	private void updatePrint(int input) {
 		try {
-			System.out.println("수정할 번호 이름 : ");
+			System.out.print("수정할 번호 이름 : ");
 			int updateNo = sc.nextInt();
 			sc.nextLine();
 			
@@ -299,7 +305,7 @@ public class KioskView {
 			System.out.println();
 			
 			
-			System.out.print("수정할 메뉴 금액 : ");
+			System.out.print("수정할 메뉴 금액 : \n");
 			int updatePrice = sc.nextInt();
 			sc.nextLine();
 			
@@ -309,8 +315,8 @@ public class KioskView {
 		
 			int result = service.updateMenu(input, kio);
 			
-			if(result > 0) System.out.println("메뉴가 수정 되었습니다.");
-			else 			System.out.println("메뉴 수정에 실패했습니다.");
+			if(result > 0) System.out.println("메뉴가 수정 되었습니다.\n");
+			else 			System.out.println("메뉴 수정에 실패했습니다.\n");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
