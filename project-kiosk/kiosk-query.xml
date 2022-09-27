@@ -27,6 +27,13 @@
 	WHERE MENU_TYPE = '기타'
 	</entry>
 	
+	
+	<!-- 랜덤 -->
+	<entry key="random">
+	SELECT MENU_NAME, MENU_PRICE FROM KIOSK_MENU
+	</entry>
+	
+	
 	<entry key="insertMenu">
 		INSERT INTO "KIOSK_MENU" (MENU_NAME, MENU_PRICE, MENU_TYPE)
 		VALUES (?, ?, ?)
@@ -60,30 +67,48 @@
 	</entry>
 	<!-- 커피 메뉴 수정 -->
 	<entry key="updateMenu2-1">
-		MENU_NAME = ?
+		MENU_NAME = ?,
 		MENU_PRICE = ?
 		WHERE MENU_COFFEE_NO = ?
 	</entry>
 		<!-- 논커피 메뉴 수정 -->
 	<entry key="updateMenu2-2">
-		MENU_NAME = ?
+		MENU_NAME = ?,
 		MENU_PRICE = ?
 		WHERE MENU_NOCOFFEE_NO = ?
 	</entry>
 		<!-- 디저트 메뉴 수정 -->
 	<entry key="updateMenu2-3">
-		MENU_NAME = ?
+		MENU_NAME = ?,
 		MENU_PRICE = ?
 		WHERE MENU_DESERT_NO = ?
 	</entry>
 		<!-- 기타 메뉴 수정 -->
 	<entry key="updateMenu2-4">
-		MENU_NAME = ?
+		MENU_NAME = ?,
 		MENU_PRICE = ?
 		WHERE MENU_ECT_NO = ?
 	</entry>
 	
-	
-	
+	<!-- 관리자 메뉴 삭제 -->
+	<entry key="deleteMenu1">
+		DELETE FROM KIOSK_MENU
+	</entry>
+	<!-- 커피 메뉴 삭제 -->
+	<entry key="deleteMenu2-1">
+		WHERE MENU_COFFEE_NO = ?
+	</entry>
+		<!-- 논커피 메뉴 삭제 -->
+	<entry key="deleteMenu2-2">
+		WHERE MENU_NOCOFFEE_NO = ?
+	</entry>
+		<!-- 디저트 메뉴 삭제 -->
+	<entry key="deleteMenu2-3">
+		WHERE MENU_DESERT_NO = ?
+	</entry>
+		<!-- 기타 메뉴 삭제 -->
+	<entry key="deleteMenu2-4">
+		WHERE MENU_ECT_NO = ?
+	</entry>
 	
 </properties>

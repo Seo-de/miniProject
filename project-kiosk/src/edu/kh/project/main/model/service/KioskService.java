@@ -42,6 +42,10 @@ public class KioskService {
 
 	}
 
+	/** 디저트 메뉴
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Kiosk> desertMenu() throws Exception {
 		Connection conn = getConnection();
 		
@@ -53,6 +57,10 @@ public class KioskService {
 
 	}
 
+	/** 기타메뉴
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Kiosk> ectMenu() throws Exception {
 		Connection conn = getConnection();
 		
@@ -62,6 +70,24 @@ public class KioskService {
 		
 		return kioList;
 	}
+	
+	
+	/** 랜덤 메뉴 추천
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Kiosk> allMenu() throws Exception{
+		Connection conn = getConnection();
+		
+		List<Kiosk> kioList = dao.allMenu(conn);
+		
+		close(conn);
+		
+		return kioList;
+	}
+
+	
+	
 	
 	/** 관리자 메뉴 추가
 	 * @param kio
@@ -101,6 +127,32 @@ public class KioskService {
 		
 		return result;
 	}
+
+
+	/** 관리자 메뉴 삭제
+	 * @param input
+	 * @param kio
+	 * @return
+	 */
+	public int deleteMenu(int input, Kiosk kio) throws Exception{
+		Connection conn = getConnection();
+		
+		int result = dao.deleteMenu(conn, input, kio);
+		
+		if(result > 0) commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+
+	}
+
+
+
+
+
+
 
 
 

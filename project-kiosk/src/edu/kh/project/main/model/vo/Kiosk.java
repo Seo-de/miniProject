@@ -1,10 +1,10 @@
 package edu.kh.project.main.model.vo;
 
-
+import java.util.List;
 
 public class Kiosk {
 
-	private int menuNo;
+
 	private int coffeeNo;
 	private int nocoffeeNo;
 	private int desertNo;
@@ -13,14 +13,25 @@ public class Kiosk {
 	private int menuPrice;
 	private String menuType;
 
+	private List<Kiosk> addKioList;
+	
+	
 
-	public int getMenuNo() {
-		return menuNo;
-	}
+	public Kiosk() { }
 
-	public void setMenuNo(int menuNo) {
-		this.menuNo = menuNo;
+
+
+	
+	
+	public List<Kiosk> getAddKioList() {
+		return addKioList;
 	}
+	
+	public void setAddKioList(List<Kiosk> addKioList) {
+		this.addKioList = addKioList;
+	}
+	
+	
 
 	public String getMenuType() {
 		return menuType;
@@ -30,7 +41,6 @@ public class Kiosk {
 		this.menuType = menuType;
 	}
 
-	public Kiosk() { }
 
 	public int getCoffeeNo() {
 		return coffeeNo;
@@ -82,7 +92,7 @@ public class Kiosk {
 
 	@Override
 	public String toString() {
-		return menuName;
+		return menuName + " " + menuPrice + "원을 선택하셨습니다.";
 	}
 
 	
