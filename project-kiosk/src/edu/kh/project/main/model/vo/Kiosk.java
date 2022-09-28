@@ -92,7 +92,7 @@ public class Kiosk {
 
 	@Override
 	public String toString() {
-		return menuName + " " + menuPrice + "원을 선택하셨습니다.";
+		return menuName + " " + menuPrice + "원";
 	}
 
 	

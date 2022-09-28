@@ -54,7 +54,7 @@ public class KioskDAO {
 			while(rs.next()) {
 				Kiosk kio = new Kiosk();
 				
-				kio.setCoffeeNo(rs.getInt("MENU_COFFEE_NO"));
+				kio.setCoffeeNo(rs.getInt("ROWNUM"));
 				kio.setMenuName(rs.getString("MENU_NAME"));
 				kio.setMenuPrice(rs.getInt("MENU_PRICE"));
 				
@@ -89,8 +89,8 @@ public class KioskDAO {
 				Kiosk kio = new Kiosk();
 				
 				kio.setNocoffeeNo(rs.getInt(1));
-				kio.setMenuName(rs.getString(2));
-				kio.setMenuPrice(rs.getInt(3));
+				kio.setMenuName(rs.getString(3));
+				kio.setMenuPrice(rs.getInt(4));
 				
 				kioList.add(kio);
 			}
@@ -124,8 +124,8 @@ public class KioskDAO {
 				Kiosk kio = new Kiosk();
 				
 				kio.setDesertNo(rs.getInt(1));
-				kio.setMenuName(rs.getString(2));
-				kio.setMenuPrice(rs.getInt(3));
+				kio.setMenuName(rs.getString(3));
+				kio.setMenuPrice(rs.getInt(4));
 				
 				kioList.add(kio);
 			}
@@ -157,8 +157,8 @@ public class KioskDAO {
 				Kiosk kio = new Kiosk();
 				
 				kio.setEctNo(rs.getInt(1));
-				kio.setMenuName(rs.getString(2));
-				kio.setMenuPrice(rs.getInt(3));
+				kio.setMenuName(rs.getString(3));
+				kio.setMenuPrice(rs.getInt(4));
 				
 				kioList.add(kio);
 			}
