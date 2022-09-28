@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>kiosk-query.xml</comment>
+	
+	<entry key="coffee">
+	SELECT ROWNUM, MENU_COFFEE_NO, MENU_NAME, MENU_PRICE
+	FROM KIOSK_MENU
+	WHERE MENU_TYPE = '커피'
+	ORDER BY MENU_COFFEE_NO
+	</entry>
+	
+	<entry key="nocoffee">
+	SELECT ROWNUM, MENU_NOCOFFEE_NO, MENU_NAME, MENU_PRICE
+	FROM KIOSK_MENU
+	WHERE MENU_TYPE = '논커피'
+	ORDER BY MENU_NOCOFFEE_NO
+	</entry>
+	
+	<entry key="desert">
+	SELECT ROWNUM, MENU_DESERT_NO, MENU_NAME, MENU_PRICE
+	FROM KIOSK_MENU
+	WHERE MENU_TYPE = '디저트'
+	ORDER BY MENU_DESERT_NO
+	</entry>
+	
+	<entry key="ect">
+	SELECT ROWNUM, MENU_ECT_NO, MENU_NAME, MENU_PRICE
+	FROM KIOSK_MENU
+	WHERE MENU_TYPE = '기타'
+	ORDER BY MENU_ECT_NO
+	</entry>
+	
+	
+	<!-- 랜덤 -->
+	<entry key="random">
+	SELECT MENU_NAME, MENU_PRICE FROM KIOSK_MENU 
+	WHERE MENU_TYPE != '기타'
+	AND MENU_NAME NOT LIKE '%취소'
+	</entry>
+	
+	
+	<entry key="insertMenu">
+		INSERT INTO "KIOSK_MENU" (MENU_NAME, MENU_PRICE, MENU_TYPE)
+		VALUES (?, ?, ?)
+	</entry>
+	
+	
+	<entry key="plusMenu1"> <!-- 메뉴 추가 INSERT부분 -->
+		INSERT INTO KIOSK_MENU
+	</entry>
+	
+	<entry key="plusMenu2-1"><!-- 메뉴 추가 COFFEE 부분 -->
+		(MENU_COFFEE_NO, MENU_NAME, MENU_PRICE, MENU_TYPE)
+		VALUES (SEQ_MENU_COFFEE_NO.NEXTVAL, ?, ?, '커피')
+	</entry>
+	<entry key="plusMenu2-2"><!-- 메뉴 추가 NOCOFFEE 부분 -->
+		(MENU_NOCOFFEE_NO, MENU_NAME, MENU_PRICE, MENU_TYPE)
+		VALUES (SEQ_MENU_NOCOFFEE_NO.NEXTVAL, ?, ?, '논커피')
+	</entry>
+	<entry key="plusMenu2-3"><!-- 메뉴 추가 DESERT 부분 -->
+		(MENU_DESERT_NO, MENU_NAME, MENU_PRICE, MENU_TYPE)
+		VALUES (SEQ_MENU_DESERT_NO.NEXTVAL, ?, ?, '디저트')	
+	</entry>
+	<entry key="plusMenu2-4"><!-- 메뉴 추가 ECT 부분 -->
+		(MENU_ECT_NO, MENU_NAME, MENU_PRICE, MENU_TYPE)
+		VALUES (SEQ_MENU_ECT_NO.NEXTVAL, ?, ?, '기타')		
+	</entry>
+	
+	<!-- 관리자 메뉴 수정 -->
+	<entry key="updateMenu1">
+		UPDATE KIOSK_MENU SET 
+	</entry>
+	<!-- 커피 메뉴 수정 -->
+	<entry key="updateMenu2-1">
+		MENU_NAME = ?,
+		MENU_PRICE = ?
+		WHERE MENU_COFFEE_NO = ?
+	</entry>
+		<!-- 논커피 메뉴 수정 -->
+	<entry key="updateMenu2-2">
+		MENU_NAME = ?,
+		MENU_PRICE = ?
+		WHERE MENU_NOCOFFEE_NO = ?
+	</entry>
+		<!-- 디저트 메뉴 수정 -->
+	<entry key="updateMenu2-3">
+		MENU_NAME = ?,
+		MENU_PRICE = ?
+		WHERE MENU_DESERT_NO = ?
+	</entry>
+		<!-- 기타 메뉴 수정 -->
+	<entry key="updateMenu2-4">
+		MENU_NAME = ?,
+		MENU_PRICE = ?
+		WHERE MENU_ECT_NO = ?
+	</entry>
+	
+	<!-- 관리자 메뉴 삭제 -->
+	<entry key="deleteMenu1">
+		DELETE FROM KIOSK_MENU
+	</entry>
+	<!-- 커피 메뉴 삭제 -->
+	<entry key="deleteMenu2-1">
+		WHERE MENU_COFFEE_NO = ?
+	</entry>
+		<!-- 논커피 메뉴 삭제 -->
+	<entry key="deleteMenu2-2">
+		WHERE MENU_NOCOFFEE_NO = ?
+	</entry>
+		<!-- 디저트 메뉴 삭제 -->
+	<entry key="deleteMenu2-3">
+		WHERE MENU_DESERT_NO = ?
+	</entry>
+		<!-- 기타 메뉴 삭제 -->
+	<entry key="deleteMenu2-4">
+		WHERE MENU_ECT_NO = ?
+	</entry>
+	
+</properties>
