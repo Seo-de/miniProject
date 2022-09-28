@@ -77,13 +77,42 @@ public class KioskView {
 					for(Kiosk k : kioList) {
 						System.out.printf("%d |  %-1s   %d원\n", k.getCoffeeNo(), k.getMenuName(), k.getMenuPrice());
 						}
-					
 					System.out.println("0 | 커피 메뉴 취소");
+					System.out.print("\n커피 메뉴 선택 : ");
+					choice = sc.nextInt();
+					sc.nextLine();
+					for(Kiosk k : kioList) {
 
+						if(choice != 0) {
+							System.out.printf("%d. %s\n", choice, kioList.get(choice-1));
+							System.out.println();
+							
+							sum += kioList.get(choice-1).getMenuPrice();
+							addList.add(kioList.get(choice-1));
+							
+							System.out.println("1. 결제");
+							System.out.println("2. 메뉴 추가");
+							System.out.println("3. 기타 추가");
+							System.out.println("0. 취소");
+							System.out.print("메뉴 입력 : ");	
+							inputNo = sc.nextInt();
+							sc.nextLine();System.out.println();
+							
+							
+							
+							switch(inputNo) {
+							case 1 : System.out.printf("%s \n총 %d 입니다.\n",addList,sum); choice = 0; break;
+							case 2 : break;
+							case 3 : ect(addList, sum); break;
+							case 0 : System.out.println("첫 화면으로 돌아갑니다.\n"); break;
+							default : System.out.println("메뉴의 번호만 입력해주세요.");
+							}
 
-					same(kioList);
+							break;
+						}
+					}
 					
-					
+					if(inputNo == 1 || inputNo == 0) return;
 					
 				} while(choice != 0); System.out.println("\n취소하셨습니다.");
 			}
@@ -92,59 +121,69 @@ public class KioskView {
 			e.printStackTrace();
 		}
 	}
-			
 	
-	private void same(List<Kiosk> kioList) {
-		List<Kiosk> addList = new ArrayList<>();
-		int choice=-1;
-		int sum = 0;
-		int inputNo = -1;
-		
+	
+	private void ect(List<Kiosk> addList, int sum) {
+		System.out.println("\n<기타 메뉴>\n");
+		int choice = -1;
+		int inputNo=-1;
 		try {
-			System.out.print("\n커피 메뉴 선택 : ");
-			choice = sc.nextInt();
-			sc.nextLine();
-			for(Kiosk k : kioList) {
-				
-				if(choice != 0) {
-					System.out.printf("%d. %s\n", choice, kioList.get(choice-1));
-					System.out.println();
-					
-					sum += kioList.get(choice-1).getMenuPrice();
-					addList.add(kioList.get(choice-1));
-					
-					System.out.println("1. 결제");
-					System.out.println("2. 메뉴 추가");
-					System.out.println("0. 취소");
-					System.out.print("메뉴 입력 : ");	
-					inputNo = sc.nextInt();
-					sc.nextLine(); System.out.println();
-					
-					switch(inputNo) {
-					case 1 : System.out.printf("%s \n총 %d 입니다.\n",addList, sum); choice = 0; break;
-					case 2 : break;
-					case 0 : System.out.println("첫 화면으로 돌아갑니다."); break;
-					default : System.out.println("메뉴의 번호만 입력해주세요.");
+			List<Kiosk> kioList = service.ectMenu();
+			if(kioList.isEmpty()) System.out.println("기타 메뉴 없음");
+			
+			else {
+				do {
+					for(Kiosk k : kioList) {
+						System.out.printf("%d |  %-1s   %d원\n", k.getEctNo(), k.getMenuName(), k.getMenuPrice());
+						}
+					System.out.println("0 | 기타 메뉴 취소");
+					System.out.print("\n기타 메뉴 선택 : ");
+					choice = sc.nextInt();
+					sc.nextLine();
+					for(Kiosk k : kioList) {
+
+						if(choice != 0) {
+							System.out.printf("%d. %s\n", choice, kioList.get(choice-1));
+							System.out.println();
+							
+							sum += kioList.get(choice-1).getMenuPrice();
+							addList.add(kioList.get(choice-1));
+							
+							System.out.println("1. 결제");
+							System.out.println("2. 메뉴 추가");
+							System.out.println("0. 취소");
+							System.out.print("메뉴 입력 : ");	
+							inputNo = sc.nextInt(); 
+							sc.nextLine();System.out.println();
+							
+							switch(inputNo) {
+							case 1 : System.out.printf("%s \n총 %d 입니다.\n\n",addList,sum); mainMenu(); break;
+							case 2 : System.out.println("기타 메뉴 추가"); return;
+							case 0 : System.out.println("첫 화면으로 돌아갑니다."); mainMenu(); break;
+							default : System.out.println("메뉴의 번호만 입력해주세요.");
+							}
+							break;
+						}
 					}
-					
-					break;
-				}
+
+				} while(choice != 0); //System.out.println("\n취소하셨습니다."); 
+				
 			}
-			if(inputNo == 1 || inputNo == 0) return;
 		} catch (Exception e) {
-			System.out.println("same의 오류");
+			System.out.println("!! 기타 메뉴 조회 중 오류 발생 !!");
 			e.printStackTrace();
 		}
-		
 	}
-	
+
+					
+					
+					
 	
 	
 	
 	private void selectNocoffee() {
 		System.out.println("\n<논커피 메뉴>\n");
 		int choice=0;
-		int input = -1;
 		int inputNo = -1;
 		int sum=0;
 
@@ -172,6 +211,7 @@ public class KioskView {
 							
 							System.out.println("1. 결제");
 							System.out.println("2. 메뉴 추가");
+							System.out.println("3. 기타 추가");
 							System.out.println("0. 취소");
 							System.out.print("\n메뉴 입력 : \n");	
 							inputNo = sc.nextInt();
@@ -180,7 +220,8 @@ public class KioskView {
 							switch(inputNo) {
 							case 1 : System.out.printf("%s \n총 %d 입니다.\n",addList, sum); choice = 0; break;
 							case 2 : break;
-							case 3 : System.out.println("첫 화면으로 돌아갑니다."); break;
+//							case 3 : ect(addList, sum); break;
+							case 0 : System.out.println("첫 화면으로 돌아갑니다."); break;
 							default : System.out.println("메뉴의 번호만 입력해주세요.");
 							}
 							break;
@@ -299,7 +340,7 @@ public class KioskView {
 							switch(inputNo) {
 							case 1 : System.out.printf("%s \n총 %d 입니다.\n",addList,sum); choice = 0; break;
 							case 2 : break;
-							case 3 : System.out.println("첫 화면으로 돌아갑니다."); break;
+							case 0 : System.out.println("첫 화면으로 돌아갑니다."); break;
 							default : System.out.println("메뉴의 번호만 입력해주세요.");
 							}
 
